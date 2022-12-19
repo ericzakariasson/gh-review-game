@@ -8,9 +8,13 @@ const app = new App({
   appId: APP_ID as string,
   privateKey: PRIVATE_KEY as string,
   webhooks: { secret: SECRET as string },
+  oauth: {
+    clientId: "",
+    clientSecret: "",
+  },
 });
 
-app.webhooks.on("issues.opened", ({ octokit, payload }) => {
+app.webhooks.on("pull_request", ({ octokit, payload }) => {
   console.log(payload);
 });
 
